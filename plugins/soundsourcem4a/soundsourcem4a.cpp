@@ -126,6 +126,7 @@ Result SoundSourceM4A::tryOpen(const AudioSourceConfig& audioSrcCfg) {
         return ERR;
     }
 
+    // TODO(lp:#1473690): Remove this error condition when we support this type of file
     if (MP4GetTrackFixedSampleDuration(m_hFile, m_trackId) != kFramesPerSampleBlock) {
       qWarning() << "Unsupported frame length:" << MP4GetTrackFixedSampleDuration(m_hFile, m_trackId);
       return ERR;
